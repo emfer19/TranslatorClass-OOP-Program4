@@ -4,33 +4,37 @@
 #Course Information: CSCI-1300-01
 #Instructor: Judy Etchison
 
-#Sources Consulted: textbook, my past programming knowledge
+#Sources Consulted: textbook, my past programming knowledge, programming project 3
 
-'''Honor Code Statement: In keeping with the honor code policies of St.Louis University, the Department of Mathematics and Computer Science, I affirm that I have neither given nor received assistance on this programming assignment. This assignment represents my individual, original effort.'''
+'''Honor Code Statement: In keeping with the honor code policies of St.Louis University,
+the Department of Mathematics and Computer Science, I affirm that I have neither given
+nor received assistance on this programming assignment. This assignment represents my
+individual, original effort.'''
 
 import urllib #because of use of url
 
 class Translator:
-  morseCode=[] #class attribute, universal to class
+  morseCode=[] #class attribute, universal to all methods in class
 
-  def __init__(self,morseURL):
+  def __init__(self,morseURL): #receives a string containing the URL for the data
     connection=urllib.urlopen(morseURL) #opens a connection to url
     morseCodeData=connection.read() #read in data
     morseCodeData=morseCodeData.split() #split on space
     connection.close()
     Translator.morseCode=morseCodeData #even index are morse, odd are letters
 
-#
-  def translate(self,phrase):
-    words=phrase.split()
-    for word in words:
+#split code to translate into morse
+  def translate(self,phrase): #receives the string containing sentence to translate
+    words=phrase.split() #split phrase into a list of the words
+    for word in words: #translate each word separately 
       print word,'in Morse code is'
-      for i in word:
-        for letter in range(0,len(Translator.morseCode),2):
-          if i==Translator.morseCode[letter]:
-            print Translator.morseCode[letter+1]
+      for i in word: #loop to do each letter separately
+        for letter in range(0,len(Translator.morseCode),2): #find the corresponding letter in the list data
+          if i==Translator.morseCode[letter]: #check if they match
+            print Translator.morseCode[letter+1] #print the morse for that letter
 
-  def display(self):
+#method to print the data
+  def display(self): #receives nothing
     print 'Letters of the alphabet with equivalent Morse code'
-    for i in range(0,len(Translator.morseCode),2):
+    for i in range(0,len(Translator.morseCode),2): #loop to control line prints
       print Translator.morseCode[i]+'  '+Translator.morseCode[i+1]
