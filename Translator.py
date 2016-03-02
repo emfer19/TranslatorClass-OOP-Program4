@@ -11,7 +11,7 @@ the Department of Mathematics and Computer Science, I affirm that I have neither
 nor received assistance on this programming assignment. This assignment represents my
 individual, original effort.'''
 
-import urllib #because of use of url
+import urllib #for use of url
 
 class Translator:
   morseCode=[] #class attribute, universal to all methods in class
