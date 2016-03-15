@@ -25,7 +25,7 @@ class Translator:
 
 #split code to translate into morse
   def translate(self,phrase): #receives the string containing sentence to translate
-    words=phrase.upper().split() #split phrase into a list of the words
+    words=phrase.upper().split() #split phrase into a list of the words, make all caps to allow lowercase to work
     for word in words: #translate each word separately 
       print word,'in Morse code is'
       for i in word: #loop to do each letter separately
